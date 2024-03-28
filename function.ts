@@ -1,6 +1,6 @@
-const puppeteer = require("puppeteer");
+import puppeteer from "puppeteer";
 
-module.exports.hello = async (event, context) => {
+const hello = async (event, context) => {
   const browser = await puppeteer.launch({
     headless: false,
   });
@@ -26,3 +26,5 @@ module.exports.hello = async (event, context) => {
 
   console.log("Hello World");
 };
+
+export { hello };

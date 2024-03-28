@@ -1,5 +1,5 @@
 service: desafio-arcca
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 provider:
   name: aws
@@ -7,13 +7,14 @@ provider:
 
 plugins:
   - serverless-offline
+  - serverless-plugin-typescript
 
 functions:
   api:
     handler: index.handler
     events:
-      - httpApi: '*'
-  hello: 
+      - httpApi: "*"
+  hello:
     handler: function.hello
     events:
       - schedule: rate(1 hour)
