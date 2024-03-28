@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres
+    container_name: scrapper-db
+    environment:
+      POSTGRES_DB: scrapper
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - ./.docker/db:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - scrapper-network
+
+networks:
+  scrapper-network:
+    driver: bridge
