@@ -4,17 +4,23 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs18.x
+  timeout: 50
 
 plugins:
   - serverless-offline
   - serverless-plugin-typescript
 
+configValidationMode: error
+
 functions:
   api:
-    handler: index.handler
+    handler: src/functions/api/server.handler
     events:
-      - httpApi: "*"
-  hello:
-    handler: function.hello
+      - httpApi:
+          path: /
+          method: POST
+
+  cronjob:
+    handler: src/functions/job/job.handler
     events:
-      - schedule: rate(1 hour)
+      - schedule: rate(5 minutes)
